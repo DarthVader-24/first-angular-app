@@ -29,6 +29,8 @@ yarn-error.log
 .history/*
 .vscode
 *.vscode
+.editorconfig
+*.editorconfig
 
 # Miscellaneous
 /.angular/cache
