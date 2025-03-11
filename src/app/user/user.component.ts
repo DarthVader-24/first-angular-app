@@ -1,5 +1,14 @@
 //import { DUMMY_USERS } from './../dummy-users';
-import { Component, computed, Input, signal, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  Input,
+  signal,
+  input,
+  Output,
+  EventEmitter,
+  output,
+} from '@angular/core';
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
@@ -32,9 +41,12 @@ export class UserComponent {
 
   // @Input({required: true}) avatar!: string;
   // @Input({required: true}) name!: string;
-
+  // @Input({required: true}) id!: string;
+  // @Output () select = new EventEmitter();
+  id = input.required<string>();
   avatar = input.required<string>();
   name = input.required<string>();
+  select = output<string>();
 
   // get imagePath(){
   //   return 'assets/users/' + this.avatar;
@@ -44,5 +56,7 @@ export class UserComponent {
     return 'assets/users/' + this.avatar();
   });
 
-  onSelectUser() {}
+  onSelectUser() {
+    this.select.emit(this.id());
+  }
 }
