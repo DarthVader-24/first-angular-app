@@ -12,6 +12,18 @@ import {
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
+// type User = {
+//   id: string;
+//   avatar: string;
+//   name: string;
+// };
+
+interface User {
+  id: string;
+  avatar: string;
+  name: string;
+};
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -42,21 +54,32 @@ export class UserComponent {
   // @Input({required: true}) avatar!: string;
   // @Input({required: true}) name!: string;
   // @Input({required: true}) id!: string;
-  // @Output () select = new EventEmitter();
-  id = input.required<string>();
-  avatar = input.required<string>();
-  name = input.required<string>();
+  // @Output () select = new EventEmitter<string>();
+
+  // id = input.required<string>();
+  // avatar = input.required<string>();
+  // name = input.required<string>();
+
+  @Input({ required: true }) user!: User;
   select = output<string>();
 
   // get imagePath(){
   //   return 'assets/users/' + this.avatar;
   // }
 
+  // imagePath = computed(() => {
+  //   return 'assets/users/' + this.avatar();
+  // });
+
   imagePath = computed(() => {
-    return 'assets/users/' + this.avatar();
+    return 'assets/users/' + this.user.avatar;
   });
 
+  // onSelectUser() {
+  //   this.select.emit(this.id());
+  // }
+
   onSelectUser() {
-    this.select.emit(this.id());
+    this.select.emit(this.user.id);
   }
 }
