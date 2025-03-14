@@ -10,6 +10,8 @@ import {
   output,
 } from '@angular/core';
 
+import { type User } from './user.model';
+
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
 // type User = {
@@ -17,12 +19,6 @@ import {
 //   avatar: string;
 //   name: string;
 // };
-
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-};
 
 @Component({
   selector: 'app-user',
@@ -61,6 +57,7 @@ export class UserComponent {
   // name = input.required<string>();
 
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected!: boolean;
   select = output<string>();
 
   // get imagePath(){
